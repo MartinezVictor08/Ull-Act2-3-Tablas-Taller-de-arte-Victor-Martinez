@@ -28,11 +28,11 @@ Copiar código
 En la terminal:
 ```bash
 python -m venv .venv
-🔑 5. Activar el entorno virtual
+### 🔑 5. Activar el entorno virtual
 bash
 Copiar código
 .venv\Scripts\activate
-⚙️ 6. Activar intérprete de Python
+### ⚙️ 6. Activar intérprete de Python
 En VS Code, presiona Ctrl + Shift + P
 
 Escribe: Python: Select Interpreter
