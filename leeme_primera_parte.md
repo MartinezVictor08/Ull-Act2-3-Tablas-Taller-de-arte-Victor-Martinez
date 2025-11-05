@@ -26,13 +26,13 @@ Copiar código
 
 ### 🐍 4. Crear entorno virtual `.venv`
 En la terminal:
-bash
+```bash
 python -m venv .venv
 🔑 5. Activar el entorno virtual
 bash
 Copiar código
 .venv\Scripts\activate
-### ⚙️ 6. Activar intérprete de Python
+⚙️ 6. Activar intérprete de Python
 En VS Code, presiona Ctrl + Shift + P
 
 Escribe: Python: Select Interpreter
@@ -204,7 +204,3 @@ Ejecutar servidor final:
 bash
 Copiar código
 python manage.py runserver 8272
-✨ Créditos
-Creado por Victor Martinez
-📍 CBTIS 128
-#
