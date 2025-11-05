@@ -26,7 +26,7 @@ Copiar código
 
 ### 🐍 4. Crear entorno virtual `.venv`
 En la terminal:
-```bash
+bash
 python -m venv .venv
 🔑 5. Activar el entorno virtual
 bash
