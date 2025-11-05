@@ -1,71 +1,159 @@
-# 🎨 Proyecto: Taller de Arte
-
-**Lenguaje:** Python  
-**Framework:** Django  
-**Editor:** Visual Studio Code  
+Perfecto ✅ Aquí tienes **todo tu documento completo** para pegar en **GitHub** con formato Markdown, comillas correctas, código copiable y los pasos bien organizados para tu proyecto **Taller de Arte** (versión funcional y estructurada igual que el ejemplo de la mueblería):
 
 ---
 
-## 🧩 Primera Parte
+# 🎨 **PROYECTO: TALLER DE ARTE**
 
-### 🗂️ 1. Crear carpeta del proyecto
-Nombre de la carpeta:
-UIII_TallerdeArte_0272
+**Lenguaje:** Python
+**Framework:** Django
+**Editor:** Visual Studio Code
 
-markdown
-Copiar código
+---
 
-### 💻 2. Abrir VS Code sobre la carpeta
-1. Abre Visual Studio Code.  
-2. Selecciona **Archivo → Abrir carpeta**.  
-3. Elige `UIII_TallerdeArte_0272`.
+## 🧩 **PRIMERA PARTE — PROCEDIMIENTO COMPLETO**
 
-### 🖥️ 3. Abrir terminal en VS Code
-- Usa el atajo:  
-  **Ctrl + ñ** o **Ver → Terminal**.
+---
 
-### 🐍 4. Crear entorno virtual `.venv`
-En la terminal:
-```bash
+### 1️⃣ Crear la carpeta del proyecto
+
+1. Abre el **Explorador de archivos**.
+
+2. Crea una nueva carpeta con el nombre:
+
+   ```
+   UIII_TallerdeArte_0272
+   ```
+
+3. Guarda la carpeta en un lugar fácil de encontrar (por ejemplo en Documentos o Escritorio).
+
+---
+
+### 2️⃣ Abrir VS Code sobre la carpeta
+
+1. Abre **Visual Studio Code**.
+
+2. Selecciona **Archivo → Abrir carpeta**.
+
+3. Busca y selecciona la carpeta:
+
+   ```
+   UIII_TallerdeArte_0272
+   ```
+
+4. Presiona **Seleccionar carpeta**.
+
+---
+
+### 3️⃣ Abrir la terminal en VS Code
+
+En la barra superior de VS Code:
+**Terminal → Nueva terminal**
+Se abrirá una terminal en la parte inferior.
+
+---
+
+### 4️⃣ Crear el entorno virtual `.venv` desde la terminal
+
+En la terminal escribe:
+
+```
 python -m venv .venv
-🔑 5. Activar el entorno virtual
-bash
-Copiar código
+```
+
+Esto crea una carpeta llamada **.venv** dentro del proyecto.
+
+---
+
+### 5️⃣ Activar el entorno virtual
+
+En la terminal (Windows):
+
+```
 .venv\Scripts\activate
-⚙️ 6. Activar intérprete de Python
-En VS Code, presiona Ctrl + Shift + P
+```
 
-Escribe: Python: Select Interpreter
+Si se activa correctamente, verás **(.venv)** al inicio de la línea.
 
-Selecciona el entorno .venv.
+---
 
-📦 7. Instalar Django
-bash
-Copiar código
+### 6️⃣ Activar intérprete de Python en VS Code
+
+1. Presiona **Ctrl + Shift + P**.
+2. Escribe **Python: Select Interpreter**.
+3. Elige el intérprete:
+
+   ```
+   .venv\Scripts\python.exe
+   ```
+
+---
+
+### 7️⃣ Instalar Django
+
+Ejecuta:
+
+```
 pip install django
-🏗️ 8. Crear el proyecto sin duplicar carpeta
-bash
-Copiar código
+```
+
+Verifica la instalación:
+
+```
+django-admin --version
+```
+
+---
+
+### 8️⃣ Crear el proyecto principal `backend_TallerdeArte`
+
+En la terminal:
+
+```
 django-admin startproject backend_TallerdeArte .
-🚀 9. Ejecutar el servidor en el puerto 8272
-bash
-Copiar código
+```
+
+> El punto **"."** evita que se cree una carpeta duplicada.
+
+---
+
+### 9️⃣ Ejecutar servidor en el puerto 8272
+
+```
 python manage.py runserver 8272
-🌐 10. Copiar el enlace en el navegador
-cpp
-Copiar código
+```
+
+---
+
+### 🔟 Copiar el enlace y abrir en el navegador
+
+Copia:
+
+```
 http://127.0.0.1:8272/
-🎨 11. Crear aplicación
-bash
-Copiar código
+```
+
+y pégalo en tu navegador.
+Deberás ver la pantalla de inicio de Django.
+
+---
+
+### 1️⃣1️⃣ Crear la aplicación `app_TallerdeArte`
+
+```
 python manage.py startapp app_TallerdeArte
-🧱 12. Archivo models.py
-python
-Copiar código
+```
+
+---
+
+### 1️⃣2️⃣ Modelo `models.py`
+
+Abre `app_TallerdeArte/models.py` y pega lo siguiente:
+
+```python
 from django.db import models
 
 # ==========================================
-# MODELO: Instructor
+# MODELO: INSTRUCTOR
 # ==========================================
 class Instructor(models.Model):
     instructor_id = models.AutoField(primary_key=True)
@@ -82,25 +170,7 @@ class Instructor(models.Model):
 
 
 # ==========================================
-# MODELO: Material
-# ==========================================
-class Material(models.Model):
-    material_id = models.AutoField(primary_key=True)
-    nombre_material = models.CharField(max_length=100)
-    tipo = models.CharField(max_length=50)
-    marca = models.CharField(max_length=50)
-    cantidad_stock = models.PositiveIntegerField()
-    costo_unitario = models.DecimalField(max_digits=8, decimal_places=2)
-    nombre_proveedor = models.CharField(max_length=100)
-    descripcion = models.TextField()
-    curso = models.ForeignKey('Curso', on_delete=models.CASCADE, related_name='materiales')
-
-    def __str__(self):
-        return self.nombre_material
-
-
-# ==========================================
-# MODELO: Curso
+# MODELO: CURSO
 # ==========================================
 class Curso(models.Model):
     curso_id = models.AutoField(primary_key=True)
@@ -111,96 +181,439 @@ class Curso(models.Model):
     costo = models.DecimalField(max_digits=8, decimal_places=2)
     fecha_inicio = models.DateField()
     cupo_maximo = models.PositiveIntegerField()
+
+    # Relación 1:M (un instructor puede tener muchos cursos)
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE, related_name='cursos')
 
     def __str__(self):
         return self.nombre_curso
-🧩 12.5 Realizar migraciones
-bash
-Copiar código
+
+
+# ==========================================
+# MODELO: MATERIAL
+# ==========================================
+class Material(models.Model):
+    material_id = models.AutoField(primary_key=True)
+    nombre_material = models.CharField(max_length=100)
+    tipo = models.CharField(max_length=50)
+    marca = models.CharField(max_length=50)
+    cantidad_stock = models.PositiveIntegerField()
+    costo_unitario = models.DecimalField(max_digits=8, decimal_places=2)
+    nombre_proveedor = models.CharField(max_length=100)
+    descripcion = models.TextField()
+
+    # Relación 1:M (un curso puede tener muchos materiales)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='materiales')
+
+    def __str__(self):
+        return self.nombre_material
+```
+
+---
+
+### 1️⃣2️⃣.5️⃣ Realizar las migraciones
+
+```
 python manage.py makemigrations
 python manage.py migrate
-👨‍🏫 13. Trabajar primero con el modelo Instructor
-📄 14. En views.py crear las funciones:
-inicio_TallerdeArte
+```
 
-agregar_instructor
+---
 
-actualizar_instructor
+### 1️⃣3️⃣ Comenzar con el modelo **Instructor**
 
-realizar_actualizacion_instructor
+(Se usará en el CRUD de la primera parte del sistema)
 
-borrar_instructor
+---
 
-🧱 15–22. Estructura de carpetas y archivos HTML
-css
-Copiar código
-app_TallerdeArte/
-│
-├── templates/
-│   ├── base.html
-│   ├── header.html
-│   ├── navbar.html
-│   ├── footer.html
-│   ├── inicio.html
-│   └── instructor/
-│       ├── agregar_instructor.html
-│       ├── ver_instructor.html
-│       ├── actualizar_instructor.html
-│       └── borrar_instructor.html
-🎨 17–20. Contenido HTML
-base.html → incluye Bootstrap (CSS + JS)
+### 1️⃣4️⃣ Funciones en `views.py`
 
-navbar.html → menú principal:
+Abre `app_TallerdeArte/views.py` y agrega lo siguiente:
 
-Sistema de Administración Taller de Arte
+```python
+from django.shortcuts import render, redirect
+from .models import Instructor
 
-Inicio
+# Página de inicio
+def inicio_TallerdeArte(request):
+    return render(request, 'inicio.html')
 
-Instructor → submenu: agregar, ver, actualizar, borrar
 
-Curso → submenu
+# Agregar instructor
+def agregar_instructor(request):
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        apellido = request.POST['apellido']
+        especialidad = request.POST['especialidad']
+        telefono = request.POST['telefono']
+        correo = request.POST['correo']
+        experiencia_anios = request.POST['experiencia_anios']
+        sueldo = request.POST['sueldo']
 
-Material → submenu
+        nuevo = Instructor(
+            nombre=nombre,
+            apellido=apellido,
+            especialidad=especialidad,
+            telefono=telefono,
+            correo=correo,
+            experiencia_anios=experiencia_anios,
+            sueldo=sueldo
+        )
+        nuevo.save()
+        return redirect('ver_instructor')
+    return render(request, 'instructor/agregar_instructor.html')
 
-(Usar íconos solo en las opciones principales)
 
-footer.html → incluir:
+# Ver instructores
+def ver_instructor(request):
+    instructores = Instructor.objects.all()
+    return render(request, 'instructor/ver_instructor.html', {'instructores': instructores})
 
-css
-Copiar código
-© Creado por Victor Martinez, CBTIS 128 — [fecha del sistema]
-(Fijo al final de la página)
 
-inicio.html → información del sistema + imagen tomada de la red sobre taller de arte.
+# Actualizar instructor
+def actualizar_instructor(request, id):
+    instructor = Instructor.objects.get(instructor_id=id)
+    return render(request, 'instructor/actualizar_instructor.html', {'instructor': instructor})
 
-🌐 24. Archivo urls.py en app_TallerdeArte
-Agregar las rutas correspondientes a las funciones CRUD del modelo Instructor.
 
-⚙️ 25–26. Configuraciones
-Registrar la app en settings.py
+# Realizar actualización
+def realizar_actualizacion_instructor(request, id):
+    instructor = Instructor.objects.get(instructor_id=id)
+    if request.method == 'POST':
+        instructor.nombre = request.POST['nombre']
+        instructor.apellido = request.POST['apellido']
+        instructor.especialidad = request.POST['especialidad']
+        instructor.telefono = request.POST['telefono']
+        instructor.correo = request.POST['correo']
+        instructor.experiencia_anios = request.POST['experiencia_anios']
+        instructor.sueldo = request.POST['sueldo']
+        instructor.save()
+        return redirect('ver_instructor')
+    return redirect('ver_instructor')
 
-Enlazar urls.py del proyecto con el de la app.
 
-🗃️ 27. Registrar modelos en admin.py
-bash
-Copiar código
-python manage.py makemigrations
-python manage.py migrate
-⚠️ Por ahora, trabajar solo con el modelo Instructor.
-Los modelos Curso y Material se dejan pendientes.
+# Borrar instructor
+def borrar_instructor(request, id):
+    instructor = Instructor.objects.get(instructor_id=id)
+    instructor.delete()
+    return redirect('ver_instructor')
+```
 
-💅 28–31. Estilo y finalización
-Usar colores suaves y modernos.
+---
 
-No validar entrada de datos.
+### 1️⃣5️⃣ Crear carpeta `templates`
 
-Crear toda la estructura antes de comenzar.
+Ruta:
 
-Proyecto debe ser totalmente funcional.
+```
+app_TallerdeArte/templates/
+```
 
-Ejecutar servidor final:
+---
 
-bash
-Copiar código
+### 1️⃣6️⃣ Crear los siguientes archivos:
+
+```
+base.html
+header.html
+navbar.html
+footer.html
+inicio.html
+```
+
+---
+
+### 1️⃣7️⃣ base.html
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Arte</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```
+
+---
+
+### 1️⃣8️⃣ navbar.html
+
+```html
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">🎨 Sistema de Administración Taller de Arte</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">🏠 Inicio</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">👨‍🏫 Instructor</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/agregar_instructor/">Agregar Instructor</a></li>
+            <li><a class="dropdown-item" href="/ver_instructor/">Ver Instructor</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📚 Curso</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Agregar Curso</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">🧵 Material</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Agregar Material</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+```
+
+---
+
+### 1️⃣9️⃣ footer.html
+
+```html
+<footer class="bg-dark text-white text-center py-3 fixed-bottom">
+    <p>© <span id="anio"></span> Creado por Victor Martinez, CBTIS 128</p>
+</footer>
+<script>
+    document.getElementById("anio").innerText = new Date().getFullYear();
+</script>
+```
+
+---
+
+### 2️⃣0️⃣ inicio.html
+
+```html
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-3">Bienvenido al Sistema de Administración del Taller de Arte</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Art-studio.jpg" width="400">
+</div>
+{% endblock %}
+```
+
+---
+
+### 2️⃣1️⃣ Crear subcarpeta `instructor`
+
+```
+app_TallerdeArte/templates/instructor/
+```
+
+---
+
+### 2️⃣2️⃣ Archivos dentro de `instructor/`
+
+**agregar_instructor.html**
+
+```html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Agregar Instructor</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2">
+  <input type="text" name="apellido" placeholder="Apellido" class="form-control mb-2">
+  <input type="text" name="especialidad" placeholder="Especialidad" class="form-control mb-2">
+  <input type="text" name="telefono" placeholder="Teléfono" class="form-control mb-2">
+  <input type="email" name="correo" placeholder="Correo" class="form-control mb-2">
+  <input type="number" name="experiencia_anios" placeholder="Años de experiencia" class="form-control mb-2">
+  <input type="text" name="sueldo" placeholder="Sueldo" class="form-control mb-2">
+  <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+{% endblock %}
+```
+
+**ver_instructor.html**
+
+```html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Lista de Instructores</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Apellido</th><th>Especialidad</th><th>Teléfono</th><th>Correo</th><th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in instructores %}
+    <tr>
+      <td>{{ i.instructor_id }}</td>
+      <td>{{ i.nombre }}</td>
+      <td>{{ i.apellido }}</td>
+      <td>{{ i.especialidad }}</td>
+      <td>{{ i.telefono }}</td>
+      <td>{{ i.correo }}</td>
+      <td>
+        <a href="/actualizar_instructor/{{ i.instructor_id }}/" class="btn btn-warning btn-sm">Editar</a>
+        <a href="/borrar_instructor/{{ i.instructor_id }}/" class="btn btn-danger btn-sm">Borrar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+```
+
+**actualizar_instructor.html**
+
+```html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Instructor</h2>
+<form method="POST" action="/realizar_actualizacion_instructor/{{ instructor.instructor_id }}/">
+  {% csrf_token %}
+  <input type="text" name="nombre" value="{{ instructor.nombre }}" class="form-control mb-2">
+  <input type="text" name="apellido" value="{{ instructor.apellido }}" class="form-control mb-2">
+  <input type="text" name="especialidad" value="{{ instructor.especialidad }}" class="form-control mb-2">
+  <input type="text" name="telefono" value="{{ instructor.telefono }}" class="form-control mb-2">
+  <input type="email" name="correo" value="{{ instructor.correo }}" class="form-control mb-2">
+  <input type="number" name="experiencia_anios" value="{{ instructor.experiencia_anios }}" class="form-control mb-2">
+  <input type="text" name="sueldo" value="{{ instructor.sueldo }}" class="form-control mb-2">
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}
+```
+
+---
+
+### 2️⃣4️⃣ urls.py en `app_TallerdeArte`
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.inicio_TallerdeArte, name='inicio_TallerdeArte'),
+    path('agregar_instructor/', views.agregar_instructor, name='agregar_instructor'),
+    path('ver_instructor/', views.ver_instructor, name='ver_instructor'),
+    path('actualizar_instructor/<int:id>/', views.actualizar_instructor, name='actualizar_instructor'),
+    path('realizar_actualizacion_instructor/<int:id>/', views.realizar_actualizacion_instructor, name='realizar_actualizacion_instructor'),
+    path('borrar_instructor/<int:id>/', views.borrar_instructor, name='borrar_instructor'),
+]
+```
+
+---
+
+### 2️⃣5️⃣ Agregar app en `settings.py`
+
+```python
+INSTALLED_APPS = [
+    ...,
+    'app_TallerdeArte',
+]
+```
+
+---
+
+### 2️⃣6️⃣ Enlazar urls.py del proyecto
+
+Edita `backend_TallerdeArte/urls.py`:
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('app_TallerdeArte.urls')),
+]
+```
+
+---
+
+### 2️⃣7️⃣ Registrar modelos en `admin.py`
+
+```python
+from django.contrib import admin
+from .models import Instructor, Curso, Material
+
+admin.site.register(Instructor)
+admin.site.register(Curso)
+admin.site.register(Material)
+```
+
+---
+
+### 2️⃣8️⃣ Estilo
+
+Usa colores **suaves, atractivos y modernos** (ya incluidos con Bootstrap).
+
+---
+
+### 2️⃣9️⃣ Estructura completa de carpetas
+
+```
+ UIII_TallerdeArte_0272/
+ │
+ ├── .venv/
+ │
+ ├── backend_TallerdeArte/
+ │   ├── __init__.py
+ │   ├── settings.py
+ │   ├── urls.py
+ │   ├── asgi.py
+ │   └── wsgi.py
+ │
+ ├── app_TallerdeArte/
+ │   ├── __init__.py
+ │   ├── admin.py
+ │   ├── apps.py
+ │   ├── models.py
+ │   ├── urls.py
+ │   ├── views.py
+ │   ├── migrations/
+ │   │    └── __init__.py
+ │   └── templates/
+ │        ├── base.html
+ │        ├── header.html
+ │        ├── navbar.html
+ │        ├── footer.html
+ │        ├── inicio.html
+ │        └── instructor/
+ │             ├── agregar_instructor.html
+ │             ├── ver_instructor.html
+ │             ├── actualizar_instructor.html
+ │             └── borrar_instructor.html
+ │
+ ├── db.sqlite3
+ └── manage.py
+```
+
+---
+
+### 3️⃣0️⃣ Ejecutar servidor
+
+```
 python manage.py runserver 8272
+```
+
+Y entra a:
+
+```
+http://127.0.0.1:8272/
+```
+
+---
+
+¿Quieres que te lo prepare en un archivo `.md` listo para subir directo a GitHub (con emojis y formato markdown completo)? Puedo generarlo para descargar.
