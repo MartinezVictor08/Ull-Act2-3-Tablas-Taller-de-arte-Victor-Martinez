@@ -28,7 +28,7 @@ Copiar código
 En la terminal:
 ```bash
 python -m venv .venv
-### 🔑 5. Activar el entorno virtual
+🔑 5. Activar el entorno virtual
 bash
 Copiar código
 .venv\Scripts\activate
@@ -207,3 +207,4 @@ python manage.py runserver 8272
 ✨ Créditos
 Creado por Victor Martinez
 📍 CBTIS 128
+#
